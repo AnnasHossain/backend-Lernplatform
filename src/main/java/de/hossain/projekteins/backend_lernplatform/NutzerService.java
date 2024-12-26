@@ -39,7 +39,10 @@ public class NutzerService {
         nutzer.setPassword(new BCryptPasswordEncoder().encode(nutzer.getPassword()));
         nutzer.setCreatedAt(LocalDateTime.now());
         nutzer.setUpdatedAt(LocalDateTime.now());
-        return nutzerRepository.save(nutzer);
+        Nutzer savedNutzer = nutzerRepository.save(nutzer);
+
+        System.out.println("Neuer Nutzer erstellt: " + savedNutzer);
+        return savedNutzer;
     }
 
 /*
