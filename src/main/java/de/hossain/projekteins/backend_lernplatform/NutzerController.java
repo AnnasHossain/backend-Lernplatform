@@ -5,6 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/nutzer")
 public class NutzerController {
@@ -22,6 +24,13 @@ public class NutzerController {
     public ResponseEntity<Nutzer> getNutzerById(@PathVariable String id) {
         Nutzer nutzer = nutzerService.getNutzerById(id);
         return new ResponseEntity<>(nutzer, HttpStatus.OK);
+    }
+
+    // alle Nutzer abrufen
+    @GetMapping
+    public ResponseEntity<List<Nutzer>> getAllNutzer() {
+        List<Nutzer> nutzerList = nutzerService.getAllNutzer(); //getAllNutzer muss im Service hinz werden damit klappt
+        return new ResponseEntity<>(nutzerList, HttpStatus.OK);
     }
 
 }

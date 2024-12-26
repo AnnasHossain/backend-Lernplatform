@@ -23,15 +23,9 @@ public class NutzerService {
         return nutzerRepository.findById(String.valueOf(id)).orElseThrow(RuntimeException::new);
     }
 
-    /* Liste geht nur dann wenn auch bei Repo-Klasse  List,statt String ändere
-    public List<Nutzer> getAll() {
-        Iterable<Nutzer> iterator = nutzerRepository.findAll();
-        List<Nutzer> Nutzers = new ArrayList<Nutzer>();
-        for (Nutzer nutzer : iterator) Nutzers.add(nutzer);
-        return Nutzers;
+    public List<Nutzer> getAllNutzer() {
+        return nutzerRepository.findAll();
     }
-
-     */
 
 
     public Nutzer createNutzer(Nutzer nutzer) {
@@ -45,17 +39,13 @@ public class NutzerService {
         return savedNutzer;
     }
 
-/*
-    public Nutzer getNutzerById(String id) {
-        return nutzerRepository.findById(id).orElseThrow(RuntimeException::new);
-
-    }
- */
 
     public Nutzer getNutzerById(String id) {
         return nutzerRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Nutzer nicht gefunden mit ID: " + id));
     }
+
+
 
 }
 
